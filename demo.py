@@ -5,6 +5,9 @@
 from appium import webdriver
 import unittest
 
+from MainPage import MainPage
+
+
 class TestXueqiu(unittest.TestCase):
 
 
@@ -43,6 +46,20 @@ class TestXueqiu(unittest.TestCase):
         self.driver.find_element_by_id("tv_search").click()
         self.driver.find_element_by_id("search_input_text").send_keys("xiaomi")
         self.driver.find_element_by_xpath("//*[@text='01810']/../../..//*[contains(@resource-id, '_btn')]").click()
+
+    def test_po(self):
+        main_page=MainPage(self.driver)
+        search_page=main_page.gotoSearch()
+        search_page.search("xiaomi")
+
+    def test_po(self):
+        main_page=MainPage(self.driver)
+        search_page=main_page.gotoSearch()
+        search_page.search("alibaba")
+
+    def test_tsl(self):
+        MainPage(self.driver).gotoSearch().search("tesla")
+
 
     def tearDown(self) -> None:
         self.driver.quit()
