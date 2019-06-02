@@ -33,5 +33,12 @@ class TestXueqiu(unittest.TestCase):
         el6 = self.driver.find_element_by_id("com.xueqiu.android:id/button_next")
         el6.click()
 
+    def test_search(self):
+        self.driver.find_element_by_id("tv_search").click()
+        self.driver.find_element_by_id("search_input_text").send_keys("alibaba")
+        self.driver.find_element_by_xpath("//*[@text='BABA']").click()
+        assert float(self.driver.find_element_by_id("stock_current_price").text)<200
+
+
     def tearDown(self) -> None:
         self.driver.quit()
